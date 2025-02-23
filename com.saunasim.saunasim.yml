@@ -18,17 +18,17 @@ finish-args:
   - --share=network # To connect to VATSIM Network
 
 modules:
-  - name: binary
+  - name: SaunaSim
     buildsystem: simple
     sources:
       - type: file
-        url: https://github.com/sauna-sim/sauna-ui/releases/download/v0.22.18/SaunaSim_0.22.18_amd64.deb
-        sha256: d1b01db0cf97d23136e073a3a3ab5943ffd8d64dc7b9ea9ef94dee551f18da37
+        url: https://github.com/sauna-sim/sauna-ui/releases/download/v0.23.0/SaunaSim_0.23.0_amd64.deb
+        sha256: 0d483046de148e96f1841a3c4d2abc826d4c8b94f075e0daf0c5518d9ffa6efa
         only-arches: [x86_64]
         dest-filename: SaunaSim.deb
       - type: file
-        url: https://github.com/sauna-sim/sauna-ui/releases/download/v0.22.18/SaunaSim_0.22.18_arm64.deb
-        sha256: 53f56f22974d11114618891e4c3817b2a21c53534d98c6a445937704928210be
+        url: https://github.com/sauna-sim/sauna-ui/releases/download/v0.23.0/SaunaSim_0.23.0_arm64.deb
+        sha256: d5e837073a9e7f8cb189552d7cc367873e6e1d8fcb81015b5cff5ddebd32e7c6
         only-arches: [aarch64]
         dest-filename: SaunaSim.deb
 
