@@ -10,14 +10,46 @@ rename-appdata-file: SaunaSim.metainfo.xml
 
 command: SaunaSim
 finish-args:
-  - --socket=x11 # Permission needed to show the window
-  #- --socket=wayland # Permission needed to show the window (Disabled for now until a solution is found for Webkit2GTK on wayland titlebar/scaling issues)
-  #- --socket=fallback-x11 # Permission needed to show the window
+  - --socket=wayland # Permission needed to show the window
+  - --socket=fallback-x11 # Permission needed to show the window
   - --device=dri # OpenGL, not necessary for all projects
   - --share=ipc # To interface with Tauri Backend
   - --share=network # To connect to VATSIM Network
 
 modules:
+  - name: webkit2gtk-4.1
+    sources:
+      - type: archive
+        url: https://webkitgtk.org/releases/webkitgtk-2.46.2.tar.xz
+        sha256: 5aae1c5c0a30d5e9c5831652b6f1bdefc31d75e0ad81cb40185b0aed92ce79b6
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DPORT=GTK
+      - -DENABLE_BUBBLEWRAP_SANDBOX=OFF
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DENABLE_DOCUMENTATION=OFF
+      - -DENABLE_MINIBROWSER=OFF
+      - -DENABLE_WEBDRIVER=OFF
+      - -DENABLE_GAMEPAD=OFF
+      - -DUSE_SOUP2=ON
+      - -DUSE_GTK4=OFF
+    modules:
+      - shared-modules/libsoup/libsoup-2.4.json
+      - name: unifdef
+        no-autogen: true
+        make-install-args:
+          - prefix=${FLATPAK_DEST}
+        sources:
+          - type: archive
+            url: https://dotat.at/prog/unifdef/unifdef-2.12.tar.xz
+            sha256: 43ce0f02ecdcdc723b2475575563ddb192e988c886d368260bc0a63aee3ac400
+        cleanup:
+          - '*'
+      - name: libbacktrace
+        sources:
+          - type: git
+            url: https://github.com/ianlancetaylor/libbacktrace.git
+            commit: 7ead8c1ea2f4aeafe9c5b9ef8a9461a9ba781aa8
   - name: SaunaSim
     buildsystem: simple
     sources:
