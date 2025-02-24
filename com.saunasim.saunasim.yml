@@ -10,7 +10,6 @@ rename-appdata-file: SaunaSim.metainfo.xml
 
 command: SaunaSim
 finish-args:
-  - --socket=x11 # Permission needed to show the window
   - --socket=wayland # Permission needed to show the window
   - --socket=fallback-x11 # Permission needed to show the window
   - --device=dri # OpenGL, not necessary for all projects
@@ -18,16 +17,11 @@ finish-args:
   - --share=network # To connect to VATSIM Network
 
 modules:
-  - name: webkit2gtk-4.0
+  - name: webkit2gtk-4.1
     sources:
       - type: archive
         url: https://webkitgtk.org/releases/webkitgtk-2.46.2.tar.xz
         sha256: 5aae1c5c0a30d5e9c5831652b6f1bdefc31d75e0ad81cb40185b0aed92ce79b6
-        x-checker-data:
-          type: html
-          url: https://webkitgtk.org/releases/
-          version-pattern: LATEST-STABLE-(\d[\.\d]+\d)
-          url-template: https://webkitgtk.org/releases/webkitgtk-$version.tar.xz
     buildsystem: cmake-ninja
     config-opts:
       - -DPORT=GTK
