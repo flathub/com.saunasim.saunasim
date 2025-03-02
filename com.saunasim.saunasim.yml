@@ -22,13 +22,13 @@ modules:
     buildsystem: simple
     sources:
       - type: file
-        url: https://github.com/sauna-sim/sauna-ui/releases/download/v0.23.3/SaunaSim_0.23.3_amd64.deb
-        sha256: a60afccc38a9e550fcbef722bd4d4b2a16a47cdfd9d2e63b0970bf536ae3ea0d
+        url: https://github.com/sauna-sim/sauna-ui/releases/download/v0.24.2/SaunaSim_0.24.2_amd64.deb
+        sha256: 11eb17c75f7385126a89587c1fe47930a0a07c8f30f3fa7c79b1d9b4b8582f2a
         only-arches: [x86_64]
         dest-filename: SaunaSim.deb
       - type: file
-        url: https://github.com/sauna-sim/sauna-ui/releases/download/v0.23.3/SaunaSim_0.23.3_arm64.deb
-        sha256: 66e7d77babcfb1bf93761c45724f17eeac5b4ae0226cc7210884c9e40af4fa6c
+        url: https://github.com/sauna-sim/sauna-ui/releases/download/v0.24.2/SaunaSim_0.24.2_arm64.deb
+        sha256: bcede04059630bf0181c906fe6579da47ec4fe97fc78cfe6418f157ddd006906
         only-arches: [aarch64]
         dest-filename: SaunaSim.deb
 
